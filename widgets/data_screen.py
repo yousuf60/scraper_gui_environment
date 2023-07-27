@@ -13,6 +13,7 @@ s.build("""
             size_hint: 1, None
             height: self.minimum_height
             BoxLayout:
+                id: btn_list
                 orientation: "vertical"
                 pos_hint: {"center_x": .5}
                 size_hint: .9, None
@@ -25,7 +26,7 @@ s.build("""
                 Btn:
 
     Button:
-        text:"s"
+        text:"editor"
         size_hint: 1, .1
         on_press:
             root.parent.transition.direction="right"
