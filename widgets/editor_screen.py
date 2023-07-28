@@ -8,14 +8,14 @@ s.build("""
         id: code_input
         text: root.input_text
         hint_text: "type a function code you should , .. yield a list with two items"
-        background_color: .9, .9, .9, .9
+        background_color: .95, .95, .95, .9
         
     BoxLayout:
         size_hint: 1, None
         height: dp(55)
         Button:
             text:"exec"
-            
+            background_color: .95, .95, .95, 1
             on_press:
                 root.parent.transition.direction="left"
                 root.parent.current="data" 
@@ -23,6 +23,7 @@ s.build("""
                 
         Button:
             text:"back"
+            background_color: .95, .95, .95, 1
             on_press:
                 root.parent.transition.direction="left"
                 root.parent.current="data"

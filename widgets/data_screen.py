@@ -32,10 +32,12 @@ s.build("""
             height: dp(55)
             Button:
                 text:"clear"
+                background_color: .95, .95, .95, 1
                 on_release:
                     root.ids.btn_list.clear_widgets()
             Button:
                 text:"editor"
+                background_color: .95, .95, .95, 1
                 on_press:
                     root.parent.transition.direction="right"
                     root.parent.current="editor"
