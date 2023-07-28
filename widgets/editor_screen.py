@@ -1,4 +1,5 @@
 from simplekivy import SimpleKivy
+from threading import Thread
 s = SimpleKivy(make_app=False)
 
 s.build("""
@@ -6,21 +7,22 @@ s.build("""
     CodeInput:
         id: code_input
         text: root.input_text
-        hint_text: "type a function code"
+        hint_text: "type a function code you should , .. yield a list with two items"
         background_color: .9, .9, .9, .9
+        
     BoxLayout:
+        size_hint: 1, None
+        height: dp(55)
         Button:
             text:"exec"
-            size_hint: 1, .1
+            
             on_press:
                 root.parent.transition.direction="left"
                 root.parent.current="data" 
-                root.code_in()
-
-                print(root.parent.get_screen("data").ids.btn_list)
+                root.code_in(root.parent.get_screen("data").add_btn)
+                
         Button:
             text:"back"
-            size_hint: 1, .1
             on_press:
                 root.parent.transition.direction="left"
                 root.parent.current="data"
@@ -33,21 +35,21 @@ class EditorScr(s.Screen):
     def edit_str_code(self, code):
         return code.replace("\n", "\n\t")
 
-    def execute(self, code):
+    def execute(self, add_btn, code):
+        
         exec("def x():" + self.edit_str_code(code))
         for i in locals()["x"]():
-            yield i
+            if type(i) is list:
+                add_btn(i)
 
     
-    def code_in(self):
-    
+    def code_in(self, add_btn):
         if self.ids.code_input.text:
             code_input_text = self.ids.code_input.text
             with open("code.txt", "w") as f:
                 f.write(code_input_text)
-                self.use_yields(self.execute("\n" + code_input_text))
-    def use_yields(self, generator):
-        for i in generator:
-            print(i)
+            Thread(target=lambda:self.execute(add_btn, "\n" + code_input_text)).start()
+            
+
 
         
