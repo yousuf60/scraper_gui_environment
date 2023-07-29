@@ -7,8 +7,9 @@ s.build("""
     CodeInput:
         id: code_input
         text: root.input_text
-        hint_text: "type a function code you should , .. yield a list with two items"
+        hint_text: " Type a function code ..you should yield a list with two strings"
         background_color: .95, .95, .95, .9
+        wrape: False
         
     BoxLayout:
         size_hint: 1, None
@@ -34,7 +35,7 @@ class EditorScr(s.Screen):
         input_text = f.read()
 
     def edit_str_code(self, code):
-        return code.replace("\n", "\n\t")
+        return code.replace("\n", "\n   ")
 
     def execute(self, add_btn, code):
         

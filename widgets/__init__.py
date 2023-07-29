@@ -6,7 +6,7 @@ screenManager = s.build("""
 ScreenManager:
     canvas.before:
         Color:
-            rgba: 0, 0, .81, .6
+            rgba: .4, .4, .81, 1
         Rectangle:
             pos: self.pos
             size: self.size
