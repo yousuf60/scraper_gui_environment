@@ -9,7 +9,7 @@ s.build("""
         text: root.input_text
         hint_text: " Type a function code ..you should yield a list with two strings"
         background_color: .95, .95, .95, .9
-        wrape: False
+        do_wrap: False
         
     BoxLayout:
         size_hint: 1, None
