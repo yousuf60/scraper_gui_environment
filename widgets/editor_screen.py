@@ -4,18 +4,21 @@ s = SimpleKivy(make_app=False)
 
 s.build("""
 #: import Window kivy.core.window.Window
+#:import ScrollEffect kivy.effects.scroll.ScrollEffect
 <EditorScr>:
     BoxLayout:
         orientation: "vertical"
         ScrollView:
+            effect_cls: ScrollEffect
             CodeInput:
                 id: code_input
                 size_hint: None, None
-                width: Window.width * 20
+                width: Window.width + (dp(len(self.text))*8)
                 height: Window.height - dp(55)
                 text: root.input_text
                 hint_text: " Type a function code ..you should yield a list with two strings"
                 background_color: .95, .95, .95, .9
+                
             
             
         BoxLayout:

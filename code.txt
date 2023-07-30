@@ -6,4 +6,4 @@ for i in range(20, 24):
 	pg = requests.get("https://www.example.com")
 	bs = BeautifulSoup(pg.text, "html.parser")
 	print(bs.a["href"])
-	yield [" text " * i, bs.a["href"]]
+	yield [" text " * i, bs.a["href"]]                                                                                                                                   
