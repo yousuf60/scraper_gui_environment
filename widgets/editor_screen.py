@@ -7,14 +7,15 @@ s.build("""
 <EditorScr>:
     BoxLayout:
         orientation: "vertical"
-        CodeInput:
-            id: code_input
-            size_hint:None, None
-            width: Window.width
-            height: Window.height - dp(55)
-            text: root.input_text
-            hint_text: " Type a function code ..you should yield a list with two strings"
-            background_color: .95, .95, .95, .9
+        ScrollView:
+            CodeInput:
+                id: code_input
+                size_hint: None, None
+                width: Window.width * 20
+                height: Window.height - dp(55)
+                text: root.input_text
+                hint_text: " Type a function code ..you should yield a list with two strings"
+                background_color: .95, .95, .95, .9
             
             
         BoxLayout:
