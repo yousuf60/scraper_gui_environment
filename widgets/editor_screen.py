@@ -3,31 +3,37 @@ from threading import Thread
 s = SimpleKivy(make_app=False)
 
 s.build("""
+#: import Window kivy.core.window.Window
 <EditorScr>:
-    CodeInput:
-        id: code_input
-        text: root.input_text
-        hint_text: " Type a function code ..you should yield a list with two strings"
-        background_color: .95, .95, .95, .9
-        do_wrap: False
-        
     BoxLayout:
-        size_hint: 1, None
-        height: dp(55)
-        Button:
-            text:"exec"
-            background_color: .95, .95, .95, 1
-            on_press:
-                root.parent.transition.direction="left"
-                root.parent.current="data" 
-                root.code_in(root.parent.get_screen("data").add_btn)
-                
-        Button:
-            text:"back"
-            background_color: .95, .95, .95, 1
-            on_press:
-                root.parent.transition.direction="left"
-                root.parent.current="data"
+        orientation: "vertical"
+        CodeInput:
+            id: code_input
+            size_hint:None, None
+            width: Window.width
+            height: Window.height - dp(55)
+            text: root.input_text
+            hint_text: " Type a function code ..you should yield a list with two strings"
+            background_color: .95, .95, .95, .9
+            
+            
+        BoxLayout:
+            size_hint: 1, None
+            height: dp(55)
+            Button:
+                text:"exec"
+                background_color: .95, .95, .95, 1
+                on_press:
+                    root.parent.transition.direction="left"
+                    root.parent.current="data" 
+                    root.code_in(root.parent.get_screen("data").add_btn)
+                    
+            Button:
+                text:"back"
+                background_color: .95, .95, .95, 1
+                on_press:
+                    root.parent.transition.direction="left"
+                    root.parent.current="data"
 """)
 
 class EditorScr(s.Screen):
