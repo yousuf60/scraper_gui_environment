@@ -7,5 +7,7 @@
 
 <img src="https://github.com/yousuf60/scraper_gui_environment/assets/64571068/b4145674-a8f3-4fcd-abde-fd1a3a6c6ed3" width="200">
 
+-------
 
-
+buildozer requirements:
+- `python3,kivy,simplekivy,pygments,requests,beautifulsoup4,chardet,idna,urllib3,certifi`
